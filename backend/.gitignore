@@ -1,7 +1,24 @@
+# Dependencies
 node_modules/
+
+# Environment secrets
 .env
 .env.*
+!.env.example
 
+# Build outputs
 dist/
 build/
+.out/
+
+# Logs
 *.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.example.json
