@@ -38,10 +38,13 @@ function AuthInnerProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
-  const doLogout = () =>
+  const doLogout = () => {
     logout({
-      logoutParams: { returnTo: window.location.origin }
+      logoutParams: { 
+        returnTo: window.location.origin 
+      }
     });
+  };
 
   const getToken = async () => {
     try {
@@ -81,7 +84,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   if (!domain || !clientId || !audience) {
     console.error("Missing Auth0 configuration!");
-    return <div>Auth0 configuration error. Check your .env file.</div>;
+    return (
+      <div className="min-h-screen bg-red-50 flex items-center justify-center p-6">
+        <div className="bg-white rounded-xl shadow-lg p-8 max-w-md">
+          <h1 className="text-2xl font-bold text-red-600">Configuration Error</h1>
+          <p className="text-gray-700 mt-2">
+            Missing Auth0 environment variables. Please check your .env file.
+          </p>
+          <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+            <p className="text-sm font-mono text-gray-600">Required variables:</p>
+            <ul className="text-sm font-mono text-gray-600 mt-2 space-y-1">
+              <li>• VITE_AUTH0_DOMAIN</li>
+              <li>• VITE_AUTH0_CLIENT_ID</li>
+              <li>• VITE_AUTH0_AUDIENCE</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -90,7 +110,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       clientId={clientId}
       authorizationParams={{
         redirect_uri: window.location.origin,
-        audience: audience
+        audience: audience,
       }}
       cacheLocation="localstorage"
       useRefreshTokens={true}
@@ -102,6 +122,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
 export function useAuth() {
   const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("useAuth must be used inside AuthProvider");
+  if (!ctx) {
+    throw new Error("useAuth must be used inside AuthProvider");
+  }
   return ctx;
 }
