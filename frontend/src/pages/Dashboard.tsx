@@ -119,7 +119,7 @@ export default function Dashboard() {
       setProcessedCache(resp.data.cache.processed);
       setTtl(resp.data.cache.ttlRemainingMs);
     } catch (e: any) {
-      console.error("❌ API Error:", e);
+      console.error("API Error:", e);
 
       const errorMsg =
         e?.response?.data?.message || e?.message || "Failed to fetch weather data";
@@ -132,14 +132,14 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchComfort(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, []);
 
   return (
     <div className={`min-h-screen ${darkMode ? "dark" : ""}`}>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 p-4 sm:p-6 lg:p-8">
         <div className="max-w-7xl mx-auto space-y-6">
-          {/* Top Bar with integrated buttons */}
+         
           <TopBar 
             onRefresh={() => fetchComfort(true)}
             darkMode={darkMode}
@@ -581,7 +581,7 @@ export default function Dashboard() {
                           strokeLinejoin="round"
                         />
 
-                        {/* Data Points */}
+                      
                         {filteredAndSortedRows.map((row, i) => {
                           const x = 50 + (i * (730 / (filteredAndSortedRows.length - 1 || 1)));
                           const score = row.comfortScore || 0;
@@ -617,7 +617,7 @@ export default function Dashboard() {
                           );
                         })}
 
-                        {/* X-axis Labels */}
+                     
                         {filteredAndSortedRows.map((row, i) => {
                           const x = 50 + (i * (730 / (filteredAndSortedRows.length - 1 || 1)));
                           return (
@@ -633,7 +633,7 @@ export default function Dashboard() {
                           );
                         })}
 
-                        {/* Gradient Definition */}
+                      
                         <defs>
                           <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" stopColor="#22c55e" />
@@ -647,7 +647,7 @@ export default function Dashboard() {
                 </div>
               )}
 
-              {/* Legend */}
+         
               <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-gray-600 dark:text-gray-400">
                   <div className="flex items-center gap-2">
@@ -679,7 +679,7 @@ export default function Dashboard() {
             </div>
           )}
 
-          {/* Table View */}
+        
           {!loading && !error && !showChart && (
             <WeatherTable rows={filteredAndSortedRows} />
           )}

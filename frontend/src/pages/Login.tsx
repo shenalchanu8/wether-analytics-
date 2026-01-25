@@ -106,7 +106,7 @@ export default function Login() {
                   )}
                 </button>
                 
-                {/* Subtext - Responsive Font */}
+              
                 <p className="text-center text-gray-500 text-[10px] sm:text-xs mt-1.5 sm:mt-2">
                   Enterprise-grade authentication required
                 </p>
@@ -114,7 +114,7 @@ export default function Login() {
 
               
 
-              {/* Security Footer - Responsive Layout - COMPACT */}
+              
               <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-gray-200">
                 <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
                   <div className="flex items-center gap-1 sm:gap-1.5">
@@ -137,7 +137,7 @@ export default function Login() {
             </div>
           </div>
 
-          {/* Copyright - Responsive Font - COMPACT */}
+          
           <div className="text-center mt-3 sm:mt-4">
             <p className="text-white/80 text-[10px] sm:text-xs">
               © 2024 Weather Analytics • Professional Edition
