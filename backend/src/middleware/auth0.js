@@ -24,7 +24,7 @@ export async function requireAuth(req, res, next) {
         req.user = payload;
         next();
     } catch (error) {
-        console.error("❌ Auth0 JWT verification failed:", error.message);
+        console.error("Auth0 JWT verification failed:", error.message);
         return res.status(401).json({ message: "Unauthorized: Invalid token" });
     }
 }
